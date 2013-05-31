@@ -1,0 +1,17 @@
+{
+	"manifest_version": 2,
+
+	"name": "Minimise content shown on the Cynaide and happyness comics",
+	"description": "Testing chrome extensions",
+	"version": "1.0",
+
+	"content_scripts": [
+		{
+			"matches": ["http://www.explosm.net/comics/*"],
+			"js": ["minium.js"]
+		}
+	],
+	"permissions": [
+		"http://www.explosm.net/comics/*"
+	]
+}
