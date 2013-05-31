@@ -1,10 +1,18 @@
-var url = "";
+url = "";
 var images = document.getElementById("maincontent").getElementsByTagName("img");
 for (var i = 0; i < images.length; i++){
 	if (images[i].getAttribute("alt") != null && images[i].getAttribute("alt") != undefined ){
 		url = images[i].getAttribute("src");
 		break;
 	}
+}
+
+if (url == ""){
+	var iframe = document.body.getElementsByClassName("youtube-player")[0];	
+}
+else{
+	var img = document.createElement('img');
+	img.setAttribute('src',url);
 }
 var divs = document.body.childNodes
 for (var i = 0; i < divs.length; i++){
@@ -14,7 +22,6 @@ for (var i = 0; i < divs.length; i++){
 var title = document.head.getElementsByTagName('title');
 var comicNum = Number(title[0].innerHTML.match(/\d+\.?\d*/g));
 
-var img = document.createElement('img');
 var script = document.createElement('script');
 var next = document.createElement('a');
 var prev = document.createElement('a');
@@ -29,7 +36,7 @@ var js = document.createTextNode('<script type="text/javascript">document.onkeyd
 
 br.setAttribute('style', 'margin-top:2em;margin-bottom:2em;');
 
-next.setAttribute('href',"http://www.explosm.net/comics/" + comicNum + 1 + "/" );
+next.setAttribute('href',"http://www.explosm.net/comics/" + (Number(comicNum) + Number(1)) + "/" );
 prev.setAttribute('href',"http://www.explosm.net/comics/" + (comicNum - 1) + "/" );
 
 prev.setAttribute('style','margin-right:1em;padding: 10px 15px;background: #4479BA;color: #FFF;-webkit-border-radius: 4px;-moz-border-radius: 4px;border-radius: 4px;border: solid 1px #20538D;text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.4);-webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.4), 0 1px 1px rgba(0, 0, 0, 0.2);-moz-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.4), 0 1px 1px rgba(0, 0, 0, 0.2);box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.4), 0 1px 1px rgba(0, 0, 0, 0.2);');
@@ -41,12 +48,15 @@ var prevText = document.createTextNode("Prev");
 next.appendChild(nextText);
 prev.appendChild(prevText);
 
-img.setAttribute('src',url);
 
 div.appendChild(br);
 div.appendChild(prev);
 div.appendChild(next);
 div.appendChild(br);
-div.appendChild(img);
-
+if (url == ""){
+	div.appendChild(iframe);
+}
+else{
+	div.appendChild(img);
+}
 document.body.appendChild(div);
