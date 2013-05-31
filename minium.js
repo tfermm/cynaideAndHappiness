@@ -15,12 +15,16 @@ var title = document.head.getElementsByTagName('title');
 var comicNum = Number(title[0].innerHTML.match(/\d+\.?\d*/g));
 
 var img = document.createElement('img');
+var script = document.createElement('script');
 var next = document.createElement('a');
 var prev = document.createElement('a');
 var br = document.createElement('div');
 var div = document.createElement('div');
 
 div.setAttribute('style', 'margin-top:2em;');
+
+script.setAttribute('type', 'text/javascript');
+var js = document.createTextNode('<script type="text/javascript">document.onkeydown = function(e) {e = e || window.event;switch (e.keyCode) {case 37:document.location.href = "/comics/' + (comicNum - 1) + '/";break;case 39:document.location.href = "/comics/' + (comicNum+1) + '/";break;}};</script>');
 
 br.setAttribute('style', 'margin-top:2em;margin-bottom:2em;');
 
