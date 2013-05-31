@@ -24,6 +24,7 @@ var div = document.createElement('div');
 div.setAttribute('style', 'margin-top:2em;');
 
 script.setAttribute('type', 'text/javascript');
+// same script from explosm.net
 var js = document.createTextNode('<script type="text/javascript">document.onkeydown = function(e) {e = e || window.event;switch (e.keyCode) {case 37:document.location.href = "/comics/' + (comicNum - 1) + '/";break;case 39:document.location.href = "/comics/' + (comicNum+1) + '/";break;}};</script>');
 
 br.setAttribute('style', 'margin-top:2em;margin-bottom:2em;');
